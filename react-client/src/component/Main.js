@@ -1,24 +1,55 @@
-import React, { useEffect } from 'react'
-import { Container } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react'
+import { Button, Container } from 'react-bootstrap';
 import { LoginForm } from './LoginForm';
+import { Link, redirect, useNavigate } from 'react-router-dom';
 
 const Main = () => {
-  const mainSize = {
-    minHeight: '800px',
+
+  const navigate = useNavigate();
+
+  const [user, setUser] = useState(true);
+
+  useEffect(() => {
+    const user = null;
+    // checkInfo(user);
+
+  }, []);
+
+  const linkToPage = (url) => {
+    navigate(url);
   }
 
-  const mainContainerStyle = [
-    'd-flex', 
-    'flex-column', 
-    'justify-content-sm-center', 
-    'align-items-sm-center',
-  ]
+  const loginBox = (user) => {
+    if (!user) {
+      return (
+        <Button onClick={linkToPage()}>
+          login
+        </Button>
+      )
+    }
+    else {
+      return (
+        <div>
+          <Button>
+            My info
+          </Button>
+          <Button>
+            My Post
+          </Button>
+          <Button>
+            My Reply
+          </Button>
+        </div>
+      )
+    }
+  }
 
   return (
-    <Container className={mainContainerStyle.map((item) => item).join(' ')}
-      fluid='sm' style={mainSize}>
-      <LoginForm/>
-    </Container>
+    <div>
+      hello
+      {loginBox(user)}
+    </div>
+    
   )
 }
 

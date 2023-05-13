@@ -1,6 +1,5 @@
 import { atom } from "recoil";
 
-
 export const regularExpression = atom({
   key: 'regularExpression',
   default: {

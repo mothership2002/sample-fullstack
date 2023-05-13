@@ -3,6 +3,16 @@ import { atom } from "recoil";
 export const loginFomrCss = atom({
   key: 'loginFomrCss',
   default: {
+    mainSize: {
+      minHeight: '800px',
+    },
+
+    mainContainerStyle: [
+      'd-flex', 
+      'flex-column', 
+      'justify-content-sm-center', 
+      'align-items-sm-center',
+    ],
 
     containerBorderStyle: [
       'd-flex',
@@ -41,7 +51,6 @@ export const loginFomrCss = atom({
     progressLogin: [
       'text-success'
     ],
-
   }
   
 });
