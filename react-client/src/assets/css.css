@@ -1,0 +1,4 @@
+.cursor-wait {
+  /* 사용자 정의 스타일 */
+  cursor: wait !important;
+}

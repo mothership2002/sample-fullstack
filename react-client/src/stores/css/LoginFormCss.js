@@ -18,7 +18,7 @@ export const loginFomrCss = atom({
     containerSize: {
       minWidth: '480px',
       minHeight: '320px',
-      padding: '16px'
+      padding: '16px',
     },
 
     validateContainerStyle : [
@@ -40,7 +40,8 @@ export const loginFomrCss = atom({
 
     progressLogin: [
       'text-success'
-    ]
+    ],
+
   }
   
 });
