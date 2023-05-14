@@ -51,6 +51,23 @@ export const loginFomrCss = atom({
     progressLogin: [
       'text-success'
     ],
+
+    findAccountLinkCss: [
+      'd-flex',
+      'mb-2',
+      'justify-content-sm-center',
+      'align-items-sm-center',
+    ],
+
+    navStyle: {
+      fontSize: '13px',
+      minHeight: '19.5px'
+    },
+
+    navClassName: [
+      'font-weight-bolder',
+      'text-primary',
+    ]
   }
   
 });

@@ -4,25 +4,21 @@ import { LoginForm } from './LoginForm';
 import { Link, redirect, useNavigate } from 'react-router-dom';
 
 const Main = () => {
-
+  
+  const [user, setUser] = useState(false);
   const navigate = useNavigate();
-
-  const [user, setUser] = useState(true);
-
+  
   useEffect(() => {
     const user = null;
     // checkInfo(user);
-
+    
   }, []);
-
-  const linkToPage = (url) => {
-    navigate(url);
-  }
+  
 
   const loginBox = (user) => {
     if (!user) {
       return (
-        <Button onClick={linkToPage()}>
+        <Button>
           login
         </Button>
       )

@@ -30,6 +30,7 @@ export const LoginForm = () => {
   // use variable
   const [validation, setValidation] = useState(null);
   const [submitFlag, setSubmitFlag] = useState(false);
+  const [showFlag, setShowFlag] = useState(false);
   
   const [emailAccount, setEmailAccount] = useState('');
   const [password, setPassword] = useState('');
@@ -64,10 +65,11 @@ export const LoginForm = () => {
     // 조회 api
 
     utils.controlCursorShape('wait');
-    const err = await testPromise(333312312);
+    const err = await testPromise(333);
     utils.controlCursorShape('auto');
 
     if (err) {
+      setShowFlag(true);
       toggleFlag();
       setValidation(message.nonExistentAccount);
     }
@@ -103,6 +105,45 @@ export const LoginForm = () => {
     setSubmitFlag(prevSubmitFlag => !prevSubmitFlag);
   }
 
+  const findAccountLink = () => {
+    if (showFlag) {
+      return (
+        <Nav activeKey="/"
+          bsPrefix={css.findAccountLinkCss.map((style) => style).join(' ') + (!submitFlag ? ' displayNone' : '')}
+          style={css.navStyle}>
+          <div className='font-letter-spacing'>
+            Forgot your &nbsp;
+          </div>
+          <Nav.Item>
+            <Nav.Link href="/" disabled={submitFlag}
+              bsPrefix={css.navClassName.map((style) => style).join(' ')}>
+              Email
+            </Nav.Link>
+          </Nav.Item>
+          <div className='font-letter-spacing'>
+            &nbsp; or &nbsp;
+          </div>
+          <Nav.Item>
+            <Nav.Link href='/' disabled={submitFlag}
+              bsPrefix={css.navClassName.map((style) => style).join(' ')}>
+              Password
+            </Nav.Link>
+          </Nav.Item>
+          <div className='font-letter-spacing'>
+            &nbsp; ?
+          </div>
+        </Nav>
+      )
+    }
+    else {
+      return (
+        <div className={css.findAccountLinkCss.map((style) => style).join(' ')}
+        style={css.navStyle}>
+        </div>
+      )
+    }
+  }
+
   return (
     <Container
       className={css.mainContainerStyle.map((item) => item).join(' ')}
@@ -133,7 +174,8 @@ export const LoginForm = () => {
 
         <Form.Group controlId="formBasicCheckbox" >
           <Form.Check
-            bsPrefix={utils.showWaitingCursorCss(submitFlag, 'form-check')}>
+            bsPrefix={utils.showWaitingCursorCss(submitFlag, 'form-check')}
+          >
             <Form.Check.Input type="checkbox"
               onChange={changeSaveLogin}
               disabled={submitFlag}
@@ -148,13 +190,13 @@ export const LoginForm = () => {
 
         <div
           className={css.validateContainerStyle.map((style) => style).join(' ')}
-          style={css.validateContainerSize}
-        >
+          style={css.validateContainerSize}>
           <Form.Text className={submitFlag ? css.progressLogin : css.failedLogin}>
-            { validation }
+            {validation}
           </Form.Text>
-
         </div>
+
+        {findAccountLink()}
 
         <Button onClick={submit} 
           disabled={submitFlag}>

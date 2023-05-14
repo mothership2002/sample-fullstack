@@ -14,7 +14,7 @@ export default class Utils {
   controlCursorShape(shape) {
     document.body.style.cursor = shape;
   }
-  
+
 }
 
 
