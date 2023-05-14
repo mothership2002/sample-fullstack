@@ -26,3 +26,8 @@
 .width-100 {
   width: 100%;
 }
+
+.min-width-75px {
+  min-width: 75px;
+  text-align: center;
+}

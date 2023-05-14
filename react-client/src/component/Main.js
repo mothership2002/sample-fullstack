@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Nav } from 'react-bootstrap';
+import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import { useRecoilValue } from 'recoil';
 import { mainCss } from '../stores/css/MainCss';
 import Utils from '../common/Utils';
@@ -13,10 +13,10 @@ const Main = () => {
   const css = useRecoilValue(mainCss);
 
   // variable
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(true);
+  const [username, setUsername] = useState('username');
 
   useEffect(() => {
-    const user = null;
     
   }, []);
   
@@ -24,7 +24,7 @@ const Main = () => {
   const toggleClass = (e) => {
     const classList = e.target.classList;
     css.navLinkStyle.forEach((style) => {
-      style !== 'hover-nav-link' && style !== 'rounded-3' ? classList.toggle(style) : null
+      style !== 'hover-nav-link' ? classList.toggle(style) : null
     });
     css.navLinkStyleHover.forEach((style) => classList.toggle(style));
   }
@@ -52,35 +52,55 @@ const Main = () => {
     else {
       return (
         <>
-          <Nav.Item>
-            <Nav.Link href="/home">My info</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="link-1">My Post</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="link-2">My Reply</Nav.Link>
-          </Nav.Item>
+          <NavDropdown title={username}
+            className={utils.returnCssClassArray(css.navDropdownMenuStyle)}
+            // onMouseEnter={toggleClass}
+            // onMouseLeave={toggleClass}
+          >
+            <NavDropdown.Item href='#'>
+              My info
+            </NavDropdown.Item>
+            <NavDropdown.Item href='#'>
+              My Post
+            </NavDropdown.Item>
+            <NavDropdown.Item href='#'>
+              My Reply
+            </NavDropdown.Item>
+          </NavDropdown>
         </>
       )
     }
   }
 
   return (
-    <Container className={utils.returnCssClassArray(css.mainContainerStyle)}>
-        <Nav className={utils.returnCssClassArray(css.navStyle)} activeKey="/home">
-          <div>
-            <Nav.Item>
-              <Nav.Link href='#' bsPrefix={utils.returnCssClassArray(css.navLinkElement)}>Post Blog</Nav.Link>
-            </Nav.Item>
-          </div>
-          <div className='d-flex'>
-            {loginBox(user)}
-          </div>
+    <Navbar bg='light'>
+      <Container >
+        <Navbar.Brand href="#home">Post Blog</Navbar.Brand>
+        <Nav className='me-auto'>
+          post
         </Nav>
-    </Container>
+        <Nav className=''>
+          {loginBox(user)}
+        </Nav>
+      </Container>
+    </Navbar>
     
+
+
   )
 }
+
+    // <Container className={utils.returnCssClassArray(css.mainContainerStyle)}>
+    //     <Nav className={utils.returnCssClassArray(css.navStyle)} activeKey="/home">
+    //       <div>
+    //         <Nav.Item>
+    //           <Nav.Link href='#' bsPrefix={utils.returnCssClassArray(css.navLinkElement)}>Post Blog</Nav.Link>
+    //         </Nav.Item>
+    //       </div>
+    //       <div className='d-flex'>
+    //         {loginBox(user)}
+    //       </div>
+    //     </Nav>
+    // </Container>
 
 export default Main;

@@ -5,22 +5,26 @@ export const mainCss = atom({
   default: {
     // 공통 처리 해야함
     mainContainerStyle: [
-      'd-flex', 
-      'flex-column', 
-      'justify-content-sm-center', 
+      'd-flex',
+      'flex-column',
+      'justify-content-sm-center',
       'align-items-sm-center',
-      'min-height'
+      'width-100'
     ],
 
     navLinkStyle: [
       'hover-nav-link',
       'bg-primary-subtle',
       'rounded-3',
+      'min-width-75px',
+      'text-wrap',
     ],
 
     navLinkStyleHover: [
       'bg-primary',
       'text-white',
+      'min-width-75px',
+      'rounded-3',
     ],
 
     navStyle: [
@@ -29,7 +33,6 @@ export const mainCss = atom({
       'p-4',
       'rounded-3',
       'bg-gradient',
-      'bg-light',
     ],
 
     addAccountNavStyle: [
@@ -40,7 +43,11 @@ export const mainCss = atom({
 
     navLinkElement: [
       'nav-link',
+    ],
 
+    navDropdownMenuStyle: [
+      'bg-primary-subtle',
+      'rounded-3',
     ]
 
   }
