@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Container, Form, Nav } from 'react-bootstrap'
+import { Alert, Button, Container, Form, Nav } from 'react-bootstrap'
 import { useRecoilValue } from 'recoil'
 import { loginFomrCss } from '../stores/css/LoginFormCss';
 import { validateMessage } from '../stores/data/static/LoginValidateMessage';
 import { regularExpression } from '../stores/data/static/RegularExpression';
 import { useNavigate } from "react-router-dom";
 import Utils from '../common/Utils';
-
-import '../assets/css.css';
 
 export const LoginForm = () => {
 
@@ -30,7 +28,9 @@ export const LoginForm = () => {
   // use variable
   const [validation, setValidation] = useState(null);
   const [submitFlag, setSubmitFlag] = useState(false);
-  const [showFlag, setShowFlag] = useState(false);
+  const [findAccountLinkFlag, setFindAccountLinkFlag] = useState(false);
+  const [alertFlag, setAlertFlag] = useState(false);
+  const [alertColor, setAlertColor] = useState('primary')
   
   const [emailAccount, setEmailAccount] = useState('');
   const [password, setPassword] = useState('');
@@ -64,12 +64,15 @@ export const LoginForm = () => {
     beforeConnectApi();
     // 조회 api
 
+    setAlertFlag(true);
+    setAlertColor('primary')
     utils.controlCursorShape('wait');
-    const err = await testPromise(333);
+    const err = await testPromise(4000);
     utils.controlCursorShape('auto');
-
+    
     if (err) {
-      setShowFlag(true);
+      setAlertColor('danger');
+      setFindAccountLinkFlag(true);
       toggleFlag();
       setValidation(message.nonExistentAccount);
     }
@@ -106,16 +109,16 @@ export const LoginForm = () => {
   }
 
   const findAccountLink = () => {
-    if (showFlag) {
+    if (findAccountLinkFlag) {
       return (
         <Nav activeKey="/"
-          bsPrefix={css.findAccountLinkCss.map((style) => style).join(' ') + (!submitFlag ? ' displayNone' : '')}
+          bsPrefix={css.findAccountLinkCss.map((style) => style).join(' ')}
           style={css.navStyle}>
           <div className='font-letter-spacing'>
             Forgot your &nbsp;
           </div>
           <Nav.Item>
-            <Nav.Link href="/" disabled={submitFlag}
+            <Nav.Link href="/find/email" disabled={submitFlag}
               bsPrefix={css.navClassName.map((style) => style).join(' ')}>
               Email
             </Nav.Link>
@@ -124,7 +127,7 @@ export const LoginForm = () => {
             &nbsp; or &nbsp;
           </div>
           <Nav.Item>
-            <Nav.Link href='/' disabled={submitFlag}
+            <Nav.Link href='/find/password' disabled={submitFlag}
               bsPrefix={css.navClassName.map((style) => style).join(' ')}>
               Password
             </Nav.Link>
@@ -147,7 +150,7 @@ export const LoginForm = () => {
   return (
     <Container
       className={css.mainContainerStyle.map((item) => item).join(' ')}
-      fluid='sm' style={css.mainSize}>
+      fluid='sm'>
       <div className={css.containerBorderStyle.map((style) => style).join(' ')}
         style={css.containerSize}>
         <Form.Group className="mb-3" controlId="formBasicEmail" >
@@ -191,9 +194,9 @@ export const LoginForm = () => {
         <div
           className={css.validateContainerStyle.map((style) => style).join(' ')}
           style={css.validateContainerSize}>
-          <Form.Text className={submitFlag ? css.progressLogin : css.failedLogin}>
+          <Alert show={alertFlag} variant={alertColor} key={alertColor}>
             {validation}
-          </Form.Text>
+          </Alert>
         </div>
 
         {findAccountLink()}

@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { RecoilRoot } from 'recoil';
 import { RouterProvider } from 'react-router';
 import { router } from './router/router';
-
+import './assets/css.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

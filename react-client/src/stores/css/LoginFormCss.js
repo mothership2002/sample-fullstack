@@ -3,15 +3,13 @@ import { atom } from "recoil";
 export const loginFomrCss = atom({
   key: 'loginFomrCss',
   default: {
-    mainSize: {
-      minHeight: '800px',
-    },
-
+    // 공통 처리 해야함
     mainContainerStyle: [
       'd-flex', 
       'flex-column', 
       'justify-content-sm-center', 
       'align-items-sm-center',
+      'min-height'
     ],
 
     containerBorderStyle: [
@@ -19,9 +17,9 @@ export const loginFomrCss = atom({
       'justify-content-sm-center',
       'flex-column',
       'square',
-      'border-5',
+      'border-4',
       'border',
-      'rounded',
+      'rounded-4',
       'border-primary'
     ],
 
@@ -35,13 +33,10 @@ export const loginFomrCss = atom({
       'd-flex',
       'flex-row',
       'justify-content-sm-center',
-      'align-items-sm-center',
-      'mb-1"',
     ],
 
     validateContainerSize: {
-      minHeight: '25px',
-      marginBottom: '.75rem'
+      marginTop: '1rem',
     },
 
     failedLogin: [

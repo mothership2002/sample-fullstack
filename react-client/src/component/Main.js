@@ -1,50 +1,80 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Container } from 'react-bootstrap';
-import { LoginForm } from './LoginForm';
-import { Link, redirect, useNavigate } from 'react-router-dom';
+import { Container, Nav } from 'react-bootstrap';
+import { useRecoilValue } from 'recoil';
+import { mainCss } from '../stores/css/MainCss';
 
 const Main = () => {
   
+  // recoil
+  const css = useRecoilValue(mainCss);
+
+  // variable
   const [user, setUser] = useState(false);
-  const navigate = useNavigate();
-  
+
   useEffect(() => {
     const user = null;
-    // checkInfo(user);
     
   }, []);
   
 
+  const toggleClass = (e) => {
+    const classList = e.target.classList;
+    css.NavLinkStyle.forEach((style) => {
+      style !== 'hover-nav-link' && style !== 'rounded-3' ? classList.toggle(style) : null
+    });
+    css.NavLinkStyleHover.forEach((style) => classList.toggle(style));
+  }
+
   const loginBox = (user) => {
     if (!user) {
       return (
-        <Button>
-          login
-        </Button>
+        <>
+          <Nav.Item>
+            <Nav.Link bsPrefix={css.addAccountNavStyle.map((style) => style).join(' ')} href='#'>
+              Don&apos;t you have Account?
+            </Nav.Link> 
+          </Nav.Item>
+
+          <Nav.Item>
+            <Nav.Link href="/login" className={css.NavLinkStyle}
+              onMouseEnter={toggleClass}
+              onMouseLeave={toggleClass}>
+              Login
+            </Nav.Link>
+          </Nav.Item>
+        </>
       )
     }
     else {
       return (
-        <div>
-          <Button>
-            My info
-          </Button>
-          <Button>
-            My Post
-          </Button>
-          <Button>
-            My Reply
-          </Button>
-        </div>
+        <>
+          <Nav.Item>
+            <Nav.Link href="/home">My info</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="link-1">My Post</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="link-2">My Reply</Nav.Link>
+          </Nav.Item>
+        </>
       )
     }
   }
 
   return (
-    <div>
-      hello
-      {loginBox(user)}
-    </div>
+    <Container className={css.mainContainerStyle.map((style) => style).join(' ')}>
+      <div className={css.headerStyle.map((style) => style).join(' ')}>
+        <div>
+          title
+        </div>
+        <div className='d-flex'>
+          <Nav className="justify-content-end" activeKey="/home">
+            {loginBox(user)}
+          </Nav>
+        </div>
+      </div>
+    </Container>
     
   )
 }

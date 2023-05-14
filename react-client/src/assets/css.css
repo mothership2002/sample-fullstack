@@ -10,3 +10,15 @@
 .font-weight-bolder {
   font-weight: bolder;
 }
+
+.min-height {
+  min-height: 800px;
+}
+
+.hover-under-line:hover {
+  text-decoration: underline;
+}
+
+.hover-nav-link {
+  transition-duration: 300ms
+}
