@@ -15,6 +15,9 @@ export default class Utils {
     document.body.style.cursor = shape;
   }
 
+  returnCssClassArray(array) {
+    return array.map(style => style).join(' ');
+  }
 }
 
 

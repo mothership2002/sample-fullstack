@@ -30,7 +30,7 @@ export const LoginForm = () => {
   const [submitFlag, setSubmitFlag] = useState(false);
   const [findAccountLinkFlag, setFindAccountLinkFlag] = useState(false);
   const [alertFlag, setAlertFlag] = useState(false);
-  const [alertColor, setAlertColor] = useState('primary')
+  const [alertColor, setAlertColor] = useState('info')
   
   const [emailAccount, setEmailAccount] = useState('');
   const [password, setPassword] = useState('');
@@ -65,7 +65,7 @@ export const LoginForm = () => {
     // 조회 api
 
     setAlertFlag(true);
-    setAlertColor('primary')
+    setAlertColor('info')
     utils.controlCursorShape('wait');
     const err = await testPromise(4000);
     utils.controlCursorShape('auto');
@@ -112,14 +112,14 @@ export const LoginForm = () => {
     if (findAccountLinkFlag) {
       return (
         <Nav activeKey="/"
-          bsPrefix={css.findAccountLinkCss.map((style) => style).join(' ')}
+          bsPrefix={utils.returnCssClassArray(css.findAccountLinkCss)}
           style={css.navStyle}>
           <div className='font-letter-spacing'>
             Forgot your &nbsp;
           </div>
           <Nav.Item>
             <Nav.Link href="/find/email" disabled={submitFlag}
-              bsPrefix={css.navClassName.map((style) => style).join(' ')}>
+              bsPrefix={utils.returnCssClassArray(css.navClassName)}>
               Email
             </Nav.Link>
           </Nav.Item>
@@ -128,7 +128,7 @@ export const LoginForm = () => {
           </div>
           <Nav.Item>
             <Nav.Link href='/find/password' disabled={submitFlag}
-              bsPrefix={css.navClassName.map((style) => style).join(' ')}>
+              bsPrefix={utils.returnCssClassArray(css.navClassName)}>
               Password
             </Nav.Link>
           </Nav.Item>
@@ -140,7 +140,7 @@ export const LoginForm = () => {
     }
     else {
       return (
-        <div className={css.findAccountLinkCss.map((style) => style).join(' ')}
+        <div className={utils.returnCssClassArray(css.findAccountLinkCss)}
         style={css.navStyle}>
         </div>
       )
@@ -149,9 +149,9 @@ export const LoginForm = () => {
 
   return (
     <Container
-      className={css.mainContainerStyle.map((item) => item).join(' ')}
+      className={utils.returnCssClassArray(css.mainContainerStyle)}
       fluid='sm'>
-      <div className={css.containerBorderStyle.map((style) => style).join(' ')}
+      <div className={utils.returnCssClassArray(css.containerBorderStyle)}
         style={css.containerSize}>
         <Form.Group className="mb-3" controlId="formBasicEmail" >
           <Form.Label bsPrefix={utils.showWaitingCursorCss(submitFlag, 'label')}>
@@ -192,7 +192,7 @@ export const LoginForm = () => {
         </Form.Group>
 
         <div
-          className={css.validateContainerStyle.map((style) => style).join(' ')}
+          className={utils.returnCssClassArray(css.validateContainerStyle)}
           style={css.validateContainerSize}>
           <Alert show={alertFlag} variant={alertColor} key={alertColor}>
             {validation}

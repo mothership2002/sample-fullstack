@@ -12,25 +12,36 @@ export const mainCss = atom({
       'min-height'
     ],
 
-    NavLinkStyle: [
+    navLinkStyle: [
       'hover-nav-link',
       'bg-primary-subtle',
       'rounded-3',
     ],
 
-    NavLinkStyleHover: [
+    navLinkStyleHover: [
       'bg-primary',
       'text-white',
+    ],
+
+    navStyle: [
+      'width-100',
+      'justify-content-md-between',
+      'p-4',
+      'rounded-3',
+      'bg-gradient',
+      'bg-light',
     ],
 
     addAccountNavStyle: [
       'hover-under-line',
       'text-primary-emphasis',
-      'nav-link'
+      'nav-link',
     ],
 
-    headerStyle: [
-      'd-flex',
+    navLinkElement: [
+      'nav-link',
+
     ]
+
   }
 });
