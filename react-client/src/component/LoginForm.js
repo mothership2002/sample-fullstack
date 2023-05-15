@@ -7,7 +7,7 @@ import { regularExpression } from '../stores/data/static/RegularExpression';
 import { useNavigate } from "react-router-dom";
 import Utils from '../common/Utils';
 
-export const LoginForm = () => {
+const LoginForm = () => {
 
   // cursor css
   const utils = new Utils();
@@ -214,3 +214,5 @@ export const LoginForm = () => {
     </Container>
   )
 }
+
+export default LoginForm;

@@ -46,7 +46,7 @@ export const mainCss = atom({
     ],
 
     navDropdownMenuStyle: [
-      'bg-primary-subtle',
+      // 'bg-primary-subtle',
       'rounded-3',
     ]
 
