@@ -17,9 +17,11 @@ const NavComponent = (prop) => {
       <Container >
         <Navbar.Brand href="#home">Post Blog</Navbar.Brand>
         <Nav className='me-auto'>
+          {/* 
           <Nav.Link href="#home">Hot Post</Nav.Link>
-          <Nav.Link href="#features">New Post</Nav.Link>
-          <Nav.Link href="#pricing"> Post </Nav.Link>
+          <Nav.Link href="#features">New Post</Nav.Link> 
+          */}
+          <Nav.Link href="#" active>Post</Nav.Link>
         </Nav>
         <Nav>
           {/* user는 스토어 처리 해야할지도 */}
