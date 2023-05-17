@@ -5,6 +5,7 @@ import { mainCss } from '../stores/css/MainCss';
 import Utils from '../common/Utils';
 import NavComponent from './NavBar/NavComponent';
 import api from '../common/ConnectAPI';
+import Post from './Post';
 
 const Main = () => {
 
@@ -20,7 +21,10 @@ const Main = () => {
   }, []);
   
   return (
-    <NavComponent user={user} username={username} />
+    <>
+      <NavComponent user={user} username={username} />
+      <Post/>
+    </>
    )
 }
 

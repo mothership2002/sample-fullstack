@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Alert, Button, Container, Form, Nav } from 'react-bootstrap'
 import { useRecoilValue } from 'recoil'
-import { loginFomrCss } from '../stores/css/LoginFormCss';
+import { loginFormCss } from '../stores/css/LoginFormCss';
 import { validateMessage } from '../stores/data/static/LoginValidateMessage';
 import { regularExpression } from '../stores/data/static/RegularExpression';
 import { useNavigate } from "react-router-dom";
+import cssClassArray from '../stores/selector/CssClassArray';
+
 import Utils from '../common/Utils';
 
 const LoginForm = () => {
@@ -13,7 +15,7 @@ const LoginForm = () => {
   const utils = new Utils();
 
   // store
-  const css = useRecoilValue(loginFomrCss);
+  const css = useRecoilValue(loginFormCss);
   const message = useRecoilValue(validateMessage);
   const regExpStr = useRecoilValue(regularExpression)
 

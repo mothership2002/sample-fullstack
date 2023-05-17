@@ -12,14 +12,14 @@ const LoginBox = (prop) => {
   const css = useRecoilValue(mainCss);
   
   const [user, setUser] = useState();
-  const [username, setUsername] = useState();
+  const [username, setUsername] = useState('username');
 
   useEffect(() => {
     setUser(prop.user);
     setUsername(prop.username);
     console.log(prop.username);
     console.log(username);
-  }, [])
+  }, [username])
 
   const toggleClass = (e) => {
     const classList = e.target.classList;
@@ -29,7 +29,7 @@ const LoginBox = (prop) => {
     css.navLinkStyleHover.forEach((style) => classList.toggle(style));
   }
 
-  if (user) {
+  if (!username) {
     return (
       <>
         <Nav.Item>
@@ -53,10 +53,9 @@ const LoginBox = (prop) => {
   else {
     return (
       <>
-        <NavDropdown title={username}
-          className={utils.returnCssClassArray(css.navDropdownMenuStyle)}
-          // onMouseEnter={toggleClass}
-          // onMouseLeave={toggleClass}
+        <NavDropdown 
+          title={username}
+          id='nav-dropdown'
         >
           <NavDropdown.Item href='#'>
             My info

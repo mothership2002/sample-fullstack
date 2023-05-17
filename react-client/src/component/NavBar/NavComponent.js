@@ -13,7 +13,7 @@ const NavComponent = (prop) => {
   }, [])
 
   return (
-    <Navbar bg='light'>
+    <Navbar bg='light' sticky='top'>
       <Container >
         <Navbar.Brand href="#home">Post Blog</Navbar.Brand>
         <Nav className='me-auto'>

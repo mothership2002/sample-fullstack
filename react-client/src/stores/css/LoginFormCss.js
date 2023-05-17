@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
-export const loginFomrCss = atom({
-  key: 'loginFomrCss',
+export const loginFormCss = atom({
+  key: 'loginFormCss',
   default: {
     // 공통 처리 해야함
     mainContainerStyle: [

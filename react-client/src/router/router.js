@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import React from "react";
 import Main from "../component/Main";
 import LoginForm from "../component/LoginForm";
-import { Board } from "../component/Board";
+import Post from "../component/Post";
 
 export const router = createBrowserRouter(
   [
@@ -14,10 +14,10 @@ export const router = createBrowserRouter(
       path: 'login',
       element: <LoginForm />
     },
-    {
-      path: 'post-board',
-      element: <Board />
-    },
+    // {
+    //   path: 'post-board',
+    //   element: <Post />
+    // },
     
   ]
 )

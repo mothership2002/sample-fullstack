@@ -27,10 +27,11 @@ const methodOptions = (method, body = null) => {
 
 const api = {
   get: async (link, queryParam) => {
-    const param = '?' + Object.entries(queryParam)
-                        .map(([key, value]) => key + '=' + value)
-                        .join('&');
-                        
+    const param = '?' + Object
+      .entries(queryParam)
+      .map(([key, value]) => key + '=' + value)
+      .join('&');
+        
     const result = await fetch(url + link + param, methodOptions('Get', null));
     return result.json();
   },
