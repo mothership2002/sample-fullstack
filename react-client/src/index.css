@@ -21,3 +21,8 @@ code {
   /* font-family: 'jalnan'; */
   letter-spacing: -.5px;
 }
+
+body {
+  margin-left: 17% !important;
+  margin-right: 17% !important;
+}

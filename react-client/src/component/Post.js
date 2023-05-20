@@ -8,7 +8,7 @@ const Post = () => {
       style={{ height: '20893px' }}>
       <div className={boardCss + ' d-flex justify-content-md-between'} style={{maxHeight:'6.58rem'}}>
         <div style={{minWidth:'75%'}} className='d-inline-flex p-3 align-items-md-center flex-md-wrap'>
-          title
+          title 크기 키우고
         </div>
 
         <div className={boardCss + ' d-inline-flex flex-md-column flex-md-wrap'}
@@ -22,7 +22,7 @@ const Post = () => {
           <div className='d-inline-flex p-1 align-items-md-center'>
             modified date
           </div>
-          <div className='d-inline-flex flex-column justify-content-md-between' style={{minHeight:'100%'}}>
+          <div className='d-inline-flex flex-column justify-content-md-evenly' style={{minHeight:'100%'}}>
             <Button>
               hello
             </Button>
