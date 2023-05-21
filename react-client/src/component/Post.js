@@ -8,8 +8,7 @@ const Post = () => {
   const sampleSync = (ms) => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        const array = temp();
-        resolve(array);
+        resolve(temp());
       }, ms)
     })
   }
@@ -35,7 +34,6 @@ const Post = () => {
   const getResult = async () => {
     const data = await sampleSync(2000);  
     setPostList(preList => [...preList, ...data]);
-    console.log(postList); 
   }
   ///////////////////////////sample data///////////////////////////////////////
 
@@ -46,41 +44,48 @@ const Post = () => {
   }, [])
   
   return (
-    <div className={boardCss + ' d-flex flex-column'}
-      style={{ height: '20893px' }}>
-      <div className={boardCss + ' d-flex justify-content-md-between'} style={{maxHeight:'6.58rem'}}>
-        <div style={{minWidth:'75%'}} className='d-inline-flex p-3 align-items-md-center flex-md-wrap'>
-          title 크기 키우고
-        </div>
-        <div className={boardCss + ' d-inline-flex flex-md-column flex-md-wrap'}
-        style={{minWidth: '25%'}}>
-          <div className='d-inline-flex p-1 align-items-md-center'>
-            creater
-          </div>
-          <div className='d-inline-flex p-1 align-items-md-center'>
-            created date
-          </div>
-          <div className='d-inline-flex p-1 align-items-md-center'>
-            modified date
-          </div>
-          <div className='d-inline-flex flex-column justify-content-md-evenly' style={{minHeight:'100%'}}>
-            <Button >
-              hello
-            </Button>
-            <Button>
-              world
-            </Button>
-          </div>
-        </div>
+    <>
+      {postList.map((element, index) => {
+        return (
+          <div className={boardCss + ' d-flex flex-column'}
+            style={{ minHeight: '500px' }}
+            key={index}>
+            <div className={boardCss + ' d-flex justify-content-md-between'} style={{maxHeight:'6.58rem'}}>
+              <div style={{minWidth:'75%'}} className='d-inline-flex p-3 align-items-md-center flex-md-wrap'>
+                {element.postContent}
+              </div>
+              <div className={boardCss + ' d-inline-flex flex-md-column flex-md-wrap'}
+              style={{minWidth: '25%'}}>
+                <div className='d-inline-flex p-1 align-items-md-center'>
+                  {element.creater}
+                </div>
+                <div className='d-inline-flex p-1 align-items-md-center'>
+                  {element.createdAt}
+                </div>
+                <div className='d-inline-flex p-1 align-items-md-center'>
+                  {element.modifiedAt}
+                </div>
+                <div className='d-inline-flex flex-column justify-content-md-evenly' style={{minHeight:'100%'}}>
+                  <Button >
+                    hello
+                  </Button>
+                  <Button>
+                    world
+                  </Button>
+                </div>
+              </div>
 
-      </div>
-      <div>
-        content
-      </div>
-      <div>
-        coment
-      </div>
-    </div>
+            </div>
+            <div style={{minHeight:'300px'}}>
+              {element.postContent}
+            </div>
+            <div>
+              coment 이건 생각해봐야겟다
+            </div>
+          </div>
+        )
+      })}
+    </>
   )
 }
 
