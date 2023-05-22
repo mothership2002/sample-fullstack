@@ -5,7 +5,6 @@ import { loginFormCss } from '../stores/css/LoginFormCss';
 import { validateMessage } from '../stores/data/static/LoginValidateMessage';
 import { regularExpression } from '../stores/data/static/RegularExpression';
 import { useNavigate } from "react-router-dom";
-import cssClassArray from '../stores/selector/CssClassArray';
 
 import Utils from '../common/Utils';
 

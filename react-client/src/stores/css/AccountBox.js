@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
-export const mainCss = atom({
-  key: 'mainCss',
+export const accountBox = atom({
+  key: 'accountBox',
   default: {
     // 공통 처리 해야함
     mainContainerStyle: [

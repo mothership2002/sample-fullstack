@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import { useRecoilValue } from 'recoil';
-import { mainCss } from '../stores/css/MainCss';
 import Utils from '../common/Utils';
 import NavComponent from './NavBar/NavComponent';
 import api from '../common/ConnectAPI';

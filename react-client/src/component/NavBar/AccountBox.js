@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { Nav, NavDropdown } from 'react-bootstrap'
 import { useRecoilValue } from 'recoil';
-import { mainCss } from '../../stores/css/MainCss';
+import { accountBox } from '../../stores/css/AccountBox';
 import Utils from '../../common/Utils';
 
-const LoginBox = (prop) => {
+const AccountBox = (prop) => {
 
   // utils
   const utils = new Utils();
   // css
-  const css = useRecoilValue(mainCss);
+  const css = useRecoilValue(accountBox);
   
   const [user, setUser] = useState();
   const [username, setUsername] = useState('username');
@@ -72,4 +72,4 @@ const LoginBox = (prop) => {
   }
 }
 
-export default LoginBox;
+export default AccountBox;
