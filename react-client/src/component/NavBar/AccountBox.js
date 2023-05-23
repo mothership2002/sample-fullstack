@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Nav, NavDropdown } from 'react-bootstrap'
 import { useRecoilValue } from 'recoil';
-import { accountBox } from '../../stores/css/AccountBox';
+import { accountBox } from '../../stores/css/AccountBoxCss';
 import Utils from '../../common/Utils';
 
 const AccountBox = (prop) => {
