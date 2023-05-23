@@ -31,3 +31,12 @@
   min-width: 75px;
   text-align: center;
 }
+
+.created-info {
+  font-size: .85rem !important;
+}
+
+.title {
+  font-size: 1.25rem !important;
+  min-width: 75%;
+}
