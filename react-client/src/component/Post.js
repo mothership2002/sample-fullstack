@@ -93,7 +93,7 @@ const Post = () => {
   
   // 이걸 무한스크롤 형식으로 사용할려면 함수로 빼야함
   const selectPostList = async (startPage = 1, count = 10) => {
-    const data = await sampleSync(1121231233);  
+    const data = await sampleSync(3000);  
     setPostList(preList => [...preList, ...data]);
   }
   ///////////////////////////sample data///////////////////////////////////////
