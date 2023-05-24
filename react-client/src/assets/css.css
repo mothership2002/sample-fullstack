@@ -40,3 +40,30 @@
   font-size: 1.25rem !important;
   min-width: 75%;
 }
+
+.post-container {
+  min-height: 500px;
+}
+
+.post-info-container {
+  max-height: 6.58rem;
+}
+
+.post-detail-info-container {
+  min-width: 25%;
+}
+
+.post-content-container {
+  min-height: 350px;
+}
+
+.date-container {
+  min-width: 40%;
+  max-width: 50%;
+  height: 100%;
+}
+
+.btn-area {
+  min-height: 100%;
+  min-width: 50%;
+}
