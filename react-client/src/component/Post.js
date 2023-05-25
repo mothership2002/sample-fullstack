@@ -13,29 +13,10 @@ const Post = () => {
   const [mockList, setMockList] = useState([]);
   const [postList, setPostList] = useState([]);
 
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [checkpointY, setCheckpointY] = useState(0);
-
   useEffect(() => {
     setMockList(preList => [...preList, PlaceholderObject(-1), PlaceholderObject(-2)]);
     selectPostList();
-    window.addEventListener('scroll', scrollEvent);
-    return () => {
-      window.removeEventListener('scroll', scrollEvent);
-    }
   }, [])
-
-  useEffect(() => {
-    const checkpoint = document.getElementById('check').getBoundingClientRect().top + window.pageYOffset;
-    setCheckpointY(Math.ceil(checkpoint));
-  }, [postList])
-  
-  const scrollEvent = () => {
-    if (checkpointY < window.scrollY) {
-      selectPostList();
-    }
-  }
-
 
   const ContentComponent = (element) => {
     return (
