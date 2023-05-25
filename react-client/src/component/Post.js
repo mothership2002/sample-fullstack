@@ -14,21 +14,28 @@ const Post = () => {
   const [postList, setPostList] = useState([]);
 
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [checkpointY, setCheckpointY] = useState(0);
 
   useEffect(() => {
     setMockList(preList => [...preList, PlaceholderObject(-1), PlaceholderObject(-2)]);
     selectPostList();
-
-    window.addEventListener('scroll', onscroll);
+    window.addEventListener('scroll', scrollEvent);
     return () => {
-      window.removeEventListener('scroll', onscroll);
+      window.removeEventListener('scroll', scrollEvent);
     }
   }, [])
+
+  useEffect(() => {
+    const checkpoint = document.getElementById('check').getBoundingClientRect().top + window.pageYOffset;
+    setCheckpointY(Math.ceil(checkpoint));
+  }, [postList])
   
-  const onscroll = () => {
-    setScrollPosition(window.scrollY || document.documentElement.scrollTop);
-    console.log(scrollPosition);
+  const scrollEvent = () => {
+    if (checkpointY < window.scrollY) {
+      selectPostList();
+    }
   }
+
 
   const ContentComponent = (element) => {
     return (
@@ -166,11 +173,11 @@ const Post = () => {
       postContent: randomPlaceholder((4 + Math.random()) * 3, null),
     }
   }
-
+ 
   const renderingComponet = (array) => {
     return array.map((element) => {
       return (
-        <ContentComponent obj={element} key={element.postId.toString()} />
+        <ContentComponent obj={element} key={element.postId.toString()} /> 
       )
     })
   }
@@ -178,6 +185,7 @@ const Post = () => {
   return (
     <>
       {renderingComponet(postList)}
+      <div id='check'/>
       {renderingComponet(mockList)}
     </>
   )
