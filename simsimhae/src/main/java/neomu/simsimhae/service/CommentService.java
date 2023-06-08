@@ -22,8 +22,8 @@ public class CommentService {
 	
 	private final CommentRepository commentRepository;
 	
-	public List<CommentDto> selectCommentListByPostId(Long postId, int offset, int limit) {	
-		PageRequest pageable = PageRequest.of(offset, limit, Sort.by("id").ascending());
+	public List<CommentDto> selectCommentListByPostId(Long postId, int page, int size) {	
+		PageRequest pageable = PageRequest.of(page, size, Sort.by("id").ascending());
 		Page<Comment> findByPostId = commentRepository.findByPostIdAndParentCommentIdIsNull(postId, pageable);
 		
 		List<CommentDto> result = findByPostId.getContent().stream()

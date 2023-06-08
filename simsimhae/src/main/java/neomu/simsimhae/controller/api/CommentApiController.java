@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import neomu.simsimhae.common.CommonResponse;
 import neomu.simsimhae.domain.dto.CommentDto;
-import neomu.simsimhae.domain.dto.CommonResponse;
 import neomu.simsimhae.service.CommentService;
 
 @RequiredArgsConstructor
@@ -23,9 +23,9 @@ public class CommentApiController {
 
 	@GetMapping("/{postId}/list")
 	public CommonResponse<List<CommentDto> > selectCommentList(@PathVariable Long postId,
-														@RequestParam(name = "offset", defaultValue = "0") int offset,
-														@RequestParam(name = "limit", defaultValue = "5") int limit) {
-		List<CommentDto> commentDtoList =  commentService.selectCommentListByPostId(postId, offset, limit);
+														@RequestParam(name = "page", defaultValue = "0") int page,
+														@RequestParam(name = "size", defaultValue = "5") int size) {
+		List<CommentDto> commentDtoList =  commentService.selectCommentListByPostId(postId, page, size);
 		
 		return new CommonResponse<List<CommentDto> >("message", LocalDateTime.now(), commentDtoList);
 	}

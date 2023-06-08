@@ -1,4 +1,4 @@
-package neomu.simsimhae.domain.dto;
+package neomu.simsimhae.common;
 
 import java.time.LocalDateTime;
 
